@@ -1,0 +1,110 @@
+///Prise de décision (if-else et switch) :///
+
+/*
+Tarification des billets : écrivez un programme qui invite l'utilisateur à saisir son âge, 
+puis détermine le prix d'un billet de cinéma en fonction des critères suivants :
+ */
+
+
+ALGORITHM Checkpoint
+
+VAR
+    price, age: INTEGER;
+BEGIN
+    price := 0;
+    Write("Please enter your age: ");
+    Read(age);
+    
+    IF (age <= 12) THEN
+        price := 10;
+    ELSE IF (age >= 13 AND age <= 17) THEN
+        price := 15;
+    ELSE IF (age >= 18) THEN
+        price := 20;
+    END IF;
+    
+    Write("The price of your ticket is ", price, " $");
+END
+
+/*
+Weather Clothing Adviser : Développez un programme qui demande à l'utilisateur la température actuelle et s'il pleut ou non. 
+Sur la base de ces informations, conseiller l'utilisateur sur les vêtements à porter.
+*/
+
+
+ALGORITHM Conseil_vestimentaire
+VAR
+    temp: INTEGER := 0;
+    ss: STRING;
+BEGIN
+    Write("Enter the temperature of your current area: ");
+    Read(temp);
+
+    Write("Enter the season of your current area: ");
+    Read(ss);
+
+    IF (temp >= -25 AND temp < 0) THEN
+        IF (ss = "seche") THEN
+            Write("WEAR CLOTHES SUITABLE FOR THE COLD")
+        ELSE IF (ss = "pluie") THEN
+            Write("VARY THE CLOTHES")
+        ELSE
+            Write("THERE IS AN ERROR IN YOUR CHOICE.")
+        END IF
+    ELSE IF (temp >= 0 AND temp <= 25) THEN
+        IF (ss = "seche") THEN
+            Write("YOU NEED HEAVY CLOTHES")
+        ELSE IF (ss = "pluie") THEN
+            Write("IT WILL BE TOO COLD, WEAR CLOTHES SUITABLE FOR THE RAIN AND COLD, BECAUSE THE WEATHER LOOKS GOOD.")
+        ELSE
+            Write("THERE IS AN ERROR IN YOUR CHOICE.")
+        END IF
+    END IF
+END
+
+
+///Récursivité ///
+
+/*
+    Séquence de Fibonacci : implémentez une fonction récursive pour générer le nième nombre de Fibonacci.
+     La séquence de Fibonacci commence par 0 et 1,et chaque nombre suivant est la somme des deux nombres précédents
+      (0, 1, 1, 2, 3, 5, 8, ...).
+*/
+
+FUNCTION fibonacci(n: INTEGER) RETURNS INTEGER
+BEGIN
+    IF n = 0 THEN
+        RETURN 0;
+    ELSE IF n = 1 THEN
+        RETURN 1;
+    ELSE
+        RETURN fibonacci(n - 1) + fibonacci(n - 2);
+    END IF
+END
+
+
+/*
+    Palindrome Checker : créez une fonction récursive pour vérifier si une chaîne donnée est un palindrome 
+    (lit la même chose vers l'avant et vers l'arrière), en ignorant les espaces, la ponctuation et les majuscules.
+*/
+
+ALGORITHM Verification
+VAR
+    texte: STRING := "";
+    i: INTEGER;
+    txt: STRING;
+BEGIN
+    Write("Enter your word: ");
+    Read(texte);
+    txt := "";
+    FOR i FROM LENGTH(texte) DOWNTO 1 DO
+        txt := txt + texte[i];
+    END_FOR
+
+    IF (txt = texte) THEN
+        Write("It's a palindrome");
+    ELSE
+        Write("It's not a palindrome");
+    END_IF
+END
+
